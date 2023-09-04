@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deployment Machine Learning</title>
+    <style>
+        body{
+            text-align: center;
+            font-family: "Montserrat","Sans-serif";
+        }
+        button{
+            background-color: grey;
+            color: white;
+            border: 0px;
+        }
+        a{
+            text-decoration: none;
+            color: grey;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Email SPAM Classifier</h1>
+
+    <form method="post" action="/predict">
+        <textarea name="email-content" id="" cols="35" rows="15" placeholder="Enter your email body...">{{ email_text }}</textarea>
+        <div>
+            <button>CHECK</button>
+            <a href="/">RESET</a>
+        </div>
+    </form>
+
+    {% if predictions == 1%}
+        <h2 style="color:red">It's a SPAM</h2>
+    {% elif predictions == -1%}
+        <h2 style="color:green">It's NOT a SPAM</h2>
+    {% endif %}
+
+</body>
+</html>
